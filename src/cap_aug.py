@@ -6,7 +6,7 @@ import numpy as np
 import random
 from skimage import exposure
 import albumentations as A
-from albumentations.augmentations.bbox_utils import denormalize_bbox, normalize_bbox
+from albumentations.core.bbox_utils import denormalize_bbox, normalize_bbox
 
 def resize_keep_ar(image, height=500, scale=None):
     if scale is not None:
@@ -135,8 +135,7 @@ class CAP_AUG(object):
         self.albu_transforms = albu_transforms
 
 
-    def __call__(self, image):
-        return self.generate_objects(image)
+    def __call__(self, image): return self.generate_objects(image)
 
 
     def generate_objects(self, image):
